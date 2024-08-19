@@ -1,0 +1,10 @@
+nome do algoritmo:Tabela de notas
+//nota:numerico
+nome:cararcter
+media:numerico
+statas:caracter
+nome: vetor[1..0]caracter
+médias: vetor[1..0]numerico
+status: vertor[1..0]caracter
+
+inicio:
