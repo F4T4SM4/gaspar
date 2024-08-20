@@ -1,0 +1,61 @@
+def mostrar_menu():
+    print("Escolha uma operação:")
+    print("1. Somar")
+    print("2. Subtrair")
+    print("3. Multiplicar")
+    print("4. Dividir")
+    print("0. Sair")
+
+def realizar_operacao(operacao, a, b):
+    if operacao == '1':
+        return a + b
+    elif operacao == '2':
+        return a - b
+    elif operacao == '3':
+        return a * b
+    elif operacao == '4':
+        return a / b
+
+def mostrar_tabuada(simbolo):
+    for i in range(1, 11):
+        if simbolo == '*':
+            print(f"{i} * {i} = {i * i}")
+        elif simbolo == '/':
+            print(f"{i} / {i} = {i / i}")
+        elif simbolo == '+':
+            print(f"{i} + {i} = {i + i}")
+        elif simbolo == '-':
+            print(f"{i} - {i} = {i - i}")
+
+def main():
+    while True:
+        mostrar_menu()
+        operacao = input("Digite o número da operação desejada: ")
+
+        if operacao == '0':
+            print("Saindo...")
+            break
+
+        if operacao in ['1', '2', '3', '4']:
+            if operacao == '1':
+                simbolo = '+'
+            elif operacao == '2':
+                simbolo = '-'
+            elif operacao == '3':
+                simbolo = '*'
+            elif operacao == '4':
+                simbolo = '/'
+
+            print(f"Você escolheu: {simbolo}")
+            escolha = input(f"Digite o símbolo '{simbolo}' para ver a tabuada ou pressione Enter para continuar: ")
+
+            if escolha == simbolo:
+                mostrar_tabuada(simbolo)
+            else:
+                a = float(input("Digite o valor de A: "))
+                b = float(input("Digite o valor de B: "))
+                resultado = realizar_operacao(operacao, a, b)
+                print(f"O resultado da operação é: {resultado}\n")
+
+if __name__ == "__main__":
+    main()
