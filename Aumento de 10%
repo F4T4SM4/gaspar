@@ -1,0 +1,15 @@
+NOME:"SALARIO_COM_AUMENTO_DE_10%"
+//DECLARAÇÃO DE VARIAVEL
+  nome:caracter  
+  salario_base:numerico
+  aumento:numerico
+  salario_final:numerico
+//INICIO:
+    escreva("diga o salario inicial: ")
+    leia("salario: ")
+    //CALCULO:
+    aumento:= salario * 0.10
+    salario:= salario + aumento
+    //RESULTADO:
+    escreva:("salario final com aumento de 10%: ", salario_final)
+//FIM_SE
