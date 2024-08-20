@@ -1,0 +1,72 @@
+INÍCIO
+
+FUNÇÃO mostrar_menu:
+    IMPRIMIR "Escolha uma operação:"
+    IMPRIMIR "1. Somar"
+    IMPRIMIR "2. Subtrair"
+    IMPRIMIR "3. Multiplicar"
+    IMPRIMIR "4. Dividir"
+    IMPRIMIR "0. Sair"
+FIM FUNÇÃO
+
+FUNÇÃO realizar_operacao(operacao, a, b):
+    SE operacao == '1':
+        RETORNAR a + b
+    SENÃO SE operacao == '2':
+        RETORNAR a - b
+    SENÃO SE operacao == '3':
+        RETORNAR a * b
+    SENÃO SE operacao == '4':
+        RETORNAR a / b
+FIM FUNÇÃO
+
+FUNÇÃO mostrar_tabuada(simbolo):
+    PARA i DE 1 ATÉ 10 FAÇA:
+        SE simbolo == '*':
+            IMPRIMIR i " * " i " = " (i * i)
+        SENÃO SE simbolo == '/':
+            IMPRIMIR i " / " i " = " (i / i)
+        SENÃO SE simbolo == '+':
+            IMPRIMIR i " + " i " = " (i + i)
+        SENÃO SE simbolo == '-':
+            IMPRIMIR i " - " i " = " (i - i)
+    FIM PARA
+FIM FUNÇÃO
+
+FUNÇÃO principal:
+    ENQUANTO VERDADEIRO FAÇA:
+        mostrar_menu()
+        operacao = LER entrada do usuário
+
+        SE operacao == '0':
+            IMPRIMIR "Saindo..."
+            PARAR EXECUÇÃO
+
+        SE operacao EM ['1', '2', '3', '4']:
+            SE operacao == '1':
+                simbolo = '+'
+            SENÃO SE operacao == '2':
+                simbolo = '-'
+            SENÃO SE operacao == '3':
+                simbolo = '*'
+            SENÃO SE operacao == '4':
+                simbolo = '/'
+
+            IMPRIMIR "Você escolheu: " simbolo
+            escolha = LER entrada do usuário
+
+            SE escolha == simbolo:
+                mostrar_tabuada(simbolo)
+            SENÃO:
+                IMPRIMIR "Digite o valor de A: "
+                a = LER valor de A
+                IMPRIMIR "Digite o valor de B: "
+                b = LER valor de B
+                resultado = realizar_operacao(operacao, a, b)
+                IMPRIMIR "O resultado da operação é: " resultado
+    FIM ENQUANTO
+FIM FUNÇÃO
+
+INICIAR principal
+
+FIM
