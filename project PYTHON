@@ -1,0 +1,83 @@
+# Função para solicitar a entrada de dados do usuário
+def entrada_dados():
+    print("Bem-vindo à Calculadora de Imposto de Renda!")
+    renda_bruta = float(input("Digite sua renda bruta anual: "))
+    despesas_dedutiveis = float(input("Digite o total de despesas dedutíveis: "))
+    outras_rendas = float(input("Digite o total de outras rendas (aluguéis, investimentos, etc.): "))
+    return renda_bruta, despesas_dedutiveis, outras_rendas
+
+# Função para calcular o imposto com base nas alíquotas
+def calcular_imposto(renda_bruta, despesas_dedutiveis, outras_rendas):
+    renda_liquida = renda_bruta - despesas_dedutiveis + outras_rendas
+    imposto = 0
+    
+    # Exemplo de alíquotas para fins ilustrativos
+    if renda_liquida <= 22847.76:
+        aliquota = 0.0
+    elif renda_liquida <= 33919.80:
+        aliquota = 0.075
+    elif renda_liquida <= 45012.60:
+        aliquota = 0.15
+    elif renda_liquida <= 55976.16:
+        aliquota = 0.225
+    else:
+        aliquota = 0.275
+
+    imposto = renda_liquida * aliquota
+    return imposto, renda_liquida
+
+# Função para exibir o resumo e resultado final
+def exibir_resultado(renda_bruta, despesas_dedutiveis, outras_rendas, imposto, renda_liquida):
+    print("\n--- Resumo do Cálculo ---")
+    print(f"Renda Bruta: R${renda_bruta:.2f}")
+    print(f"Despesas Dedutíveis: R${despesas_dedutiveis:.2f}")
+    print(f"Outras Rendas: R${outras_rendas:.2f}")
+    print(f"Renda Líquida: R${renda_liquida:.2f}")
+    print(f"Imposto Devido: R${imposto:.2f}")
+
+# Função para gerar o relatório em PDF
+def gerar_relatorio_pdf(renda_bruta, despesas_dedutiveis, outras_rendas, imposto, renda_liquida):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+
+    pdf.cell(200, 10, txt="Resumo do Calculo de Imposto de Renda", ln=True, align='C')
+    pdf.ln(10)
+
+    pdf.cell(200, 10, txt=f"Renda Bruta: R${renda_bruta:.2f}", ln=True)
+    pdf.cell(200, 10, txt=f"Despesas Dedutíveis: R${despesas_dedutiveis:.2f}", ln=True)
+    pdf.cell(200, 10, txt=f"Outras Rendas: R${outras_rendas:.2f}", ln=True)
+    pdf.cell(200, 10, txt=f"Renda Líquida: R${renda_liquida:.2f}", ln=True)
+    pdf.cell(200, 10, txt=f"Imposto Devido: R${imposto:.2f}", ln=True)
+
+    pdf.output("relatorio_imposto_renda.pdf")
+    print("\nRelatório em PDF gerado com sucesso!")
+
+# Função para realizar simulações de imposto
+def simulacoes():
+    while True:
+        renda_bruta, despesas_dedutiveis, outras_rendas = entrada_dados()
+        imposto, renda_liquida = calcular_imposto(renda_bruta, despesas_dedutiveis, outras_rendas)
+        exibir_resultado(renda_bruta, despesas_dedutiveis, outras_rendas, imposto, renda_liquida)
+        
+        repetir = input("\nDeseja fazer outra simulação? (s/n): ").lower()
+        if repetir != 's':
+            break
+
+# Função principal para integrar todos os passos
+def calculadora_imposto():
+    simulacao = input("Deseja fazer simulações de imposto? (s/n): ").lower()
+    if simulacao == 's':
+        simulacoes()
+    else:
+        renda_bruta, despesas_dedutiveis, outras_rendas = entrada_dados()
+        imposto, renda_liquida = calcular_imposto(renda_bruta, despesas_dedutiveis, outras_rendas)
+        exibir_resultado(renda_bruta, despesas_dedutiveis, outras_rendas, imposto, renda_liquida)
+        
+        gerar_pdf = input("\nDeseja gerar um relatório em PDF? (s/n): ").lower()
+        if gerar_pdf == 's':
+            gerar_relatorio_pdf(renda_bruta, despesas_dedutiveis, outras_rendas, imposto, renda_liquida)
+
+# Executando a calculadora
+if __name__ == "__main__":
+    calculadora_imposto()
