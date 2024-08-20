@@ -1,0 +1,29 @@
+//NOME: Tabela_de_notas.
+
+INÍCIO
+    // Declaração das variáveis
+    ALUNOS <- caracter
+    NOTAS <- caracter
+    MEDIA <- numerico
+    STATUS <- numerico
+
+    // Loop para calcular a média e determinar o status de cada aluno
+    PARA x DE 1 ATÉ 3 FAÇA
+        MEDIA[x] <- (NOTAS[x][1] + NOTAS[x][2] + NOTAS[x][3]) / 3
+        
+        SE MEDIA[x] >= 6 ENTÃO
+            STATUS[x] <- "Aprovado"
+        SENÃO
+            STATUS[x] <- "Reprovado"
+        FIM SE
+    FIM PARA
+
+    // Exibir os resultados
+    PARA x DE 1 ATÉ 3 FAÇA
+        ESCREVA "Nome: ", ALUNOS[x]
+        ESCREVA "Notas: ", NOTAS[x][1], ", ", NOTAS[x][2], ", ", NOTAS[x][3]
+        ESCREVA "Média: ", MEDIA[x]
+        ESCREVA "Status: ", STATUS[x]
+        ESCREVA "-------------------------"
+    FIM PARA
+FIM
