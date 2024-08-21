@@ -1,5 +1,5 @@
-//PR�TICA DE ALGORITMO
-//1) Desenvolva um algoritmo e um programa em python. Que escreva na tela uma tabuada din�mica com todas as seguintes opera��es(+,-,*,/).
+//PRATICA DE ALGORITMO
+//1) Desenvolva um algoritmo e um programa em python. Que escreva na tela uma tabuada dinamica com todas as seguintes operacoes(+,-,*,/).
 
 algoritmo "TABUADA"
 var
@@ -8,11 +8,11 @@ var
   operacao: caractere
 inicio
 escreval("MENU")
-escreval("ESCOLHA ENTRE AS OP��ES ABAIXO")
-escreval("1 - Qual a opera��o que voc� quer usar? (+, -, *, /). ")
+escreval("ESCOLHA ENTRE AS OPCOES ABAIXO")
+escreval("1 - Qual a operacao que voce quer usar? (+, -, *, /). ")
 escreval("2 - tabuada completa! (+, -, *, /). ")
 escreval("3 - Sair ")
-escreva("Digite aqui o n�mero: ")
+escreva("Digite aqui o numero: ")
 
 //l� a escolha do usuario
 leia(opcao)
@@ -20,13 +20,13 @@ leia(opcao)
 limpatela
 
 se opcao = 1 entao
-   escreval("Qual a opera��o vai querer usar?")
+   escreval("Qual a operacao vai querer usar?")
    escreval("Escolha entre (+, -, *, /)")
    escreva("Digite aqui: ")
    leia(operacao)
 fimse
 se operacao = "*" entao
-   escreval("Qual o n�mero da tabuada que voc� quer?")
+   escreval("Qual o numero da tabuada que voce quer?")
    leia(numero)
    limpatela
    para x de 1 ate 10 passo 1 faca
